@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CurrencyConverter</string>
+    <string name="rmb"><![CDATA[RMB <--> $]]></string>
+</resources>
