@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="66dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="#19b17e"
+        android:gravity="center"
+        android:text="0/10"
+        android:textColor="#ffffff"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/picture"
+        android:layout_width="309dp"
+        android:layout_height="231dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/score"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <Button
+        android:id="@+id/option1"
+        android:layout_width="277dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="#ff1744"
+        android:tag="1"
+        android:text="Waffles"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hint" />
+
+    <Button
+        android:id="@+id/option2"
+        android:layout_width="277dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#2979FF"
+        android:tag="2"
+        android:text="Burger"
+        app:layout_constraintEnd_toEndOf="@+id/option1"
+        app:layout_constraintStart_toStartOf="@+id/option1"
+        app:layout_constraintTop_toBottomOf="@+id/option1" />
+
+    <Button
+        android:id="@+id/option3"
+        android:layout_width="277dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#00E676"
+        android:tag="3"
+        android:text="Pizza"
+        app:layout_constraintEnd_toEndOf="@+id/option2"
+        app:layout_constraintStart_toStartOf="@+id/option2"
+        app:layout_constraintTop_toBottomOf="@+id/option2" />
+
+    <Button
+        android:id="@+id/option4"
+        android:layout_width="277dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#FF9100"
+        android:tag="4"
+        android:text="Hotdog"
+        app:layout_constraintEnd_toEndOf="@+id/option3"
+        app:layout_constraintStart_toStartOf="@+id/option3"
+        app:layout_constraintTop_toBottomOf="@+id/option3" />
+
+    <Button
+        android:id="@+id/hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="#FFFF00"
+        android:tag="5"
+        android:text="Hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/picture" />
+</android.support.constraint.ConstraintLayout>

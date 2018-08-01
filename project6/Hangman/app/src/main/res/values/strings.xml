@@ -1,0 +1,98 @@
+<resources>
+    <string name="app_name">Hangman</string>
+
+    <string-array name="base_list">
+
+        <item name="base0">
+         +------------\n
+         |           |\n
+         |           |\n
+         |           O\n
+         |          /|\\\n
+         |          / \\\n
+         |            \n
+         |            \n
+         |            \n
+        _+_____
+        </item>
+
+        <item name="base1">
+        " +------------\n"
+        " |           |\n"
+        " |           |\n"
+        " |           O\n"
+        " |          /|\\\n"
+        " |          / \n"
+        " |            \n"
+        " |            \n"
+        " |            \n"
+        "_+_____  "
+    </item>
+
+        <item name="base2">
+        " +------------\n"
+        " |           |\n"
+        " |           |\n"
+        " |           O\n"
+        " |          /|\\\n"
+        " |            \n"
+        " |            \n"
+        " |            \n"
+        " |            \n"
+        "_+_____  "
+       </item>
+
+        <item name="base3">
+        " +------------\n"
+        " |           |\n"
+        " |           |\n"
+        " |           O\n"
+        " |          /|\n"
+        " |            \n"
+        " |            \n"
+        " |            \n"
+        " |            \n"
+        "_+_____  "
+    </item>
+
+        <item name="base4">
+        " +------------\n"
+        " |           |\n"
+        " |           |\n"
+        " |           O\n"
+        " |           |\n"
+        " |            \n"
+        " |            \n"
+        " |            \n"
+        " |            \n"
+        "_+_____  "
+    </item>
+
+        <item name="base5">
+        " +------------\n"
+        " |           |\n"
+        " |           |\n"
+        " |           O\n"
+        " |            \n"
+        " |            \n"
+        " |            \n"
+        " |            \n"
+        " |            \n"
+        "_+_____  "
+    </item>
+
+        <item name="base6">
+        " +------------\n"
+        " |           |\n"
+        " |           |\n"
+        " |            \n"
+        " |            \n"
+        " |            \n"
+        " |            \n"
+        " |            \n"
+        " |            \n"
+        "_+_____  "
+    </item>
+    </string-array>
+</resources>
+
