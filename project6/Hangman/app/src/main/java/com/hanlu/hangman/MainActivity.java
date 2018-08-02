@@ -48,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
         wordsList = readWords(getAssets());
         hangMan = newWord();
         lives = 6;
+        wrongLetters = new ArrayList<>();
+        rightLetters = new ArrayList<>();
+        drawMan(lives);
         guessButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 String s = guessEdit.getText().toString();
@@ -56,7 +59,12 @@ public class MainActivity extends AppCompatActivity {
                     replaceWords(rightLetters, hangMan);
                 } else {
                     wrongLetters.add(s);
-                    wrongText.setText((CharSequence) wrongLetters);
+                    wrongText.setText("");
+                    for(String c : wrongLetters) {
+                        wrongText.append(c);
+                        if(wrongLetters.indexOf(c) != wrongLetters.size() - 1)
+                            wrongText.append(",");
+                    }
                     lives--;
                 }
                 if (!(showWord.getText().toString().contains("_"))) {
@@ -112,8 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
     public String newWord() {
         int n = random.nextInt(wordsList.size());
-        String word = wordsList.get(n);
-        return word;
+        return wordsList.get(n);
     }
 
     public ArrayList<String> readWords(AssetManager assetManager) {
