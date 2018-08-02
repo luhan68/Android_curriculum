@@ -45,66 +45,96 @@ public class MainActivity extends AppCompatActivity {
         guessEdit = findViewById(R.id.guess_edit);
         guessButton = findViewById(R.id.guess_button);
         random = new Random(new Date().getTime());
-        wordsList = readWords(getAssets());
-        hangMan = newWord();
-        lives = 6;
-        wrongLetters = new ArrayList<>();
-        rightLetters = new ArrayList<>();
-        drawMan(lives);
+        resetGame();
         guessButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                String s = guessEdit.getText().toString();
-                if (hangMan.contains(s)) {
-                    rightLetters.add(s);
-                    replaceWords(rightLetters, hangMan);
-                } else {
-                    wrongLetters.add(s);
-                    wrongText.setText("");
-                    for(String c : wrongLetters) {
-                        wrongText.append(c);
-                        if(wrongLetters.indexOf(c) != wrongLetters.size() - 1)
-                            wrongText.append(",");
-                    }
-                    lives--;
+                if (rightLetters.contains(showWord.getText().toString()) || wrongLetters.contains((showWord.getText().toString())))
+                    alertView1("Alert!", "You have already entered the letter.", "Try another");
+                else if (showWord.getText().toString().matches("[a-zA-Z]+"))
+                    alertView1("Alert!", "Please enter a letter.", "Try another");
+                else {
+                    replaceWords();
+                    drawMan(lives);
+                    guessEdit.setText("");
                 }
-                if (!(showWord.getText().toString().contains("_"))) {
-                    alertView("You win", "Remaining lives is " + lives + ".", "Play Again");
-                }else if (lives == 0) {
-                    alertView("Game Over", "Answer " + hangMan + ".", "Play Again");
-                }
-                drawMan(lives);
+                if (!(showWord.getText().toString().contains("_")))
+                    alertView2("You win", "Remaining lives is " + lives + ".", "Play Again");
+                if (lives == 0)
+                    alertView2("Game Over", "The answer is " + hangMan + ".", "Play Again");
             }
         });
 
     }
 
-    public void replaceWords(ArrayList<String> letter, String word) {
-            for (int index = 0; index < word.length(); index++)
-            {
-                if(!letter.contains(Character.toString(word.charAt(index)))) {
-                    word = word.substring(0, index) + "_" + word.substring(index + 1);
-                }
+    public void replaceWords() {
+        String s = guessEdit.getText().toString();
+        if (hangMan.contains(s))
+            rightLetters.add(s);
+        else {
+            wrongLetters.add(s);
+            lives--;
+        }
+
+        showWord.setText("");
+        for (int index = 0; index < hangMan.length(); index++) {
+            String x = hangMan.substring(index, index + 1);
+            if (rightLetters.contains(x)) {
+                showWord.append(hangMan.substring(index, index + 1));
+            } else {
+                showWord.append("_");
+                if (index != hangMan.length() - 1)
+                    showWord.append(" ");
             }
-            showWord.setText(word);
+        }
+        wrongText.setText("");
+        for (String c : wrongLetters) {
+            wrongText.append(c);
+            if (wrongLetters.indexOf(c) != wrongLetters.size() - 1)
+                wrongText.append(",");
+        }
+        // for (int index = 0; index < word.length(); index++) {
+        //     if (!letter.contains(Character.toString(word.charAt(index)))) {
+        //         word = word.substring(0, index) + "_" + word.substring(index + 1);
+        //     }
+        // }
+        // showWord.setText(word);
+
     }
 
     public void resetGame() {
-        StringBuilder beginWord = null;
         lives = 6;
+        wrongText.setText("");
+        guessEdit.setText("");
         wordsList = readWords(getAssets());
         hangMan = newWord();
         wrongLetters = new ArrayList<>();
-        wrongText.setText("");
         rightLetters = new ArrayList<>();
-        for (int i = 0; i < hangMan.length(); i++)
-            beginWord.append("_");
-        assert beginWord != null;
-        showWord.setText(beginWord.toString());
+        replaceWords();
+//        showWord.setText("");
+//        for (int i = 0; i < hangMan.length(); i++) {
+//            showWord.append("_");
+//            if (i != hangMan.length() - 1)
+//                showWord.append(" ");
+//        }
         drawMan(lives);
     }
 
 
-    void alertView(String title, String message, String buttonM) {
+    void alertView1(String title, String message, final String buttonM) {
+        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+        alertDialog.setTitle(title);
+        alertDialog.setMessage(message);
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, buttonM,
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        guessEdit.setText("");
+                    }
+                });
+        alertDialog.setCancelable(false);
+        alertDialog.show();
+    }
+
+    void alertView2(String title, String message, final String buttonM) {
         AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
         alertDialog.setTitle(title);
         alertDialog.setMessage(message);
