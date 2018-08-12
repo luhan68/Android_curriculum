@@ -1,44 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/recycler_view"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:background="?android:attr/selectableItemBackground"
     android:clickable="true"
-    android:padding="8dp"
-    android:focusable="true">
+    android:focusable="true"
+    android:orientation="vertical"
+    android:padding="8dp">
 
     <ImageView
         android:id="@+id/video_picture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/picture1" />
 
-    <ImageView
-        android:id="@+id/author_picture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/video_picture"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:src="@drawable/unnamed"
+            app:civ_border_color="#ffffff"
+            app:civ_border_width="2dp" />
 
         <TextView
             android:id="@+id/video_name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/profile_image"
+            android:layout_toRightOf="@+id/profile_image"
+            android:paddingRight="15dp"
+            android:text="Sha Hai Episode 1"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/author_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:id="@+id/subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/video_name"
+            android:layout_alignStart="@+id/video_name"
+            android:layout_below="@+id/video_name"
+            android:text="Caravan中文剧场 • 156K views 6 days ago" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
-
-</RelativeLayout>
+</LinearLayout>
