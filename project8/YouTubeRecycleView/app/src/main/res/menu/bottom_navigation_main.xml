@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_favourites"
+        android:enabled="true"
+        android:icon="@android:drawable/ic_lock_idle_alarm"
+        android:title="Favourite"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_play"
+        android:enabled="true"
+        android:icon="@android:drawable/ic_media_play"
+        android:title="Schedule"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_save"
+        android:enabled="true"
+        android:icon="@android:drawable/ic_menu_save"
+        android:title="Music"
+        app:showAsAction="ifRoom" />
+</menu>
