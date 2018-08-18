@@ -11,10 +11,10 @@ public class PagerAdapter extends FragmentPagerAdapter {
     }
 
     @Override
-    public Fragment getItem(int i){
+    public Fragment getItem(int i) {
         if (i == 1) {
             return VideoFragment.newInstance(i);
-        }else {
+        } else {
             return EmptyFragment.newInstance(i);
         }
     }
