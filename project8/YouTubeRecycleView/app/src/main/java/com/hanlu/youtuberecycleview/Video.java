@@ -5,49 +5,60 @@ import android.widget.ImageView;
 
 public class Video {
 
-    private String author_name, title, author_url, video_url;
+    private String video_img_url;
+    private String video_url;
+    private String author_title_url;
+    private String video_title;
+    private String author_title;
 
-    public Video(String author_name, String title, String author_photo, String video_pic)
-    {
-        this.author_name = author_name;
-        this.title = title;
-        author_url = author_photo;
-        video_url = video_pic;
+    public String getVideo_img_url() {
+        return video_img_url;
     }
 
-    public void setAuthorName(String author_name)
-    {
-        this.author_name = author_name;
+    public void setVideo_img_url(String video_img_url) {
+        this.video_img_url = video_img_url;
     }
 
-    public void setVideoTitle(String title)
-    {
-        this.title = title;
-    }
-
-    public void setAuthorPhoto(String author_photo)
-    {
-        author_url = author_photo;
-    }
-
-    public void setVideoPic(String video_pic)
-    {
-        video_url = video_pic;
-    }
-
-    public String getAuthorName(){
-        return author_name;
-    }
-
-    public String getVideoTitle(){
-        return title;
-    }
-
-    public String getAuthorPhoto() {
-        return author_url;
-    }
-
-    public String getVideoPic() {
+    public String getVideo_url() {
         return video_url;
     }
+
+    public void setVideo_url(String video_url) {
+        this.video_url = video_url;
+    }
+
+    public String getAuthor_title_url() {
+        return author_title_url;
+    }
+
+    public void setAuthor_title_url(String author_title_url) {
+        this.author_title_url = author_title_url;
+    }
+
+    public String getAuthor_title() {
+        return author_title;
+    }
+
+    public void setAuthor_title(String author_title) {
+        this.author_title = author_title;
+    }
+
+    public String getVideo_title() {
+        return video_title;
+    }
+
+    public void setVideo_title(String video_title) {
+        this.video_title = video_title;
+    }
+
+
+    public Video(String video_img_url, String video_url, String author_title_url, String author_title, String video_title) {
+        this.video_img_url = video_img_url;
+        this.video_url = video_url;
+        this.author_title_url = author_title_url;
+        this.author_title = author_title;
+        this.video_title = video_title;
+    }
+
+
 }

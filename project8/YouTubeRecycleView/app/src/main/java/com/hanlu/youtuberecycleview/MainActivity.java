@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         pagerAdapter = new PagerAdapter(getSupportFragmentManager());
-
         container = findViewById(R.id.container);
         container.setAdapter(pagerAdapter);
         container.setCurrentItem(1);
