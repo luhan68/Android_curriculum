@@ -17,9 +17,9 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_menus"
+        android:id="@+id/action_orders"
         android:enabled="true"
         android:icon="@android:drawable/ic_menu_save"
-        android:title="Menus"
+        android:title="Orders"
         app:showAsAction="ifRoom" />
 </menu>
