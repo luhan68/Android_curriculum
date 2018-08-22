@@ -12,7 +12,7 @@ public class PagerAdapter extends FragmentPagerAdapter{
 
     @Override
     public Fragment getItem(int i) {
-        if (i == 1) {
+        if (i == 0) {
             return FoodFragment.newInstance(i);
         } else {
             return EmptyFragment.newInstance(i);
