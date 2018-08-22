@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     }
                 });
-        switchPages(1);
+        switchPages(0);
     }
 
     public void switchPages(int i) {
