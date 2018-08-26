@@ -18,36 +18,34 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import static android.widget.LinearLayout.HORIZONTAL;
 import static android.widget.LinearLayout.VERTICAL;
 
 public class FoodFragment extends Fragment {
     private static String ARG_SECTION_NUMBER = "SECTION_NUMBER";
-    private RecyclerView recyclerView;
-    private RecyclerAdapter recyclerAdapter;
+    private RecyclerView foodRecyclerView;
+    private FoodRecyclerAdapter foodRecyclerAdapter;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.food_fragment, container, false);
-        recyclerView = view.findViewById(R.id.recycler_view);
-        recyclerAdapter = new RecyclerAdapter();
-        recyclerView.setAdapter(recyclerAdapter);
+        foodRecyclerView = view.findViewById(R.id.food_recycler_view);
+        foodRecyclerAdapter = new FoodRecyclerAdapter();
+        foodRecyclerView.setAdapter(foodRecyclerAdapter);
 
 
-        // CANNOT UNDERSTAND FOLLOWING LINES.
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(container.getContext());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.addItemDecoration(new DividerItemDecoration(container.getContext(), VERTICAL));
 
-
-        initializeFood(container.getContext().getAssets());
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(container.getContext(), recyclerView, new RecyclerTouchListener.ClickListener() {
+        initializeRecyclerView(container);
+        initializeObject(container.getContext().getAssets());
+        foodRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(container.getContext(), foodRecyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Food food = RecyclerAdapter.getFood(position);
+                Food food = FoodRecyclerAdapter.getFood(position);
                 Toast.makeText(container.getContext(), food.getTitle() + " is selected!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(container.getContext(), FoodActivity.class);
                 startActivity(intent);
@@ -62,23 +60,36 @@ public class FoodFragment extends Fragment {
     }
 
 
+    public void initializeRecyclerView(ViewGroup container){
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(container.getContext());
+        foodRecyclerView.setLayoutManager(layoutManager);
+        foodRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        foodRecyclerView.addItemDecoration(new DividerItemDecoration(container.getContext(), VERTICAL));
+
+
+    }
 
 
     //title, intro, picture_url, name, info;
-    public void initializeFood(AssetManager assetManager){
+    public void initializeObject(AssetManager assetManager){
         InputStream inputStream;
+        ArrayList<String> pictureList = new ArrayList<>();
         try{
             inputStream = assetManager.open("foods.txt");
             Scanner kb = new Scanner(inputStream);
             kb.nextLine();
             while (kb.hasNext()){
+                for (int i = 0; i < 4; i++) {
+                    String picture = kb.nextLine();
+                    pictureList.add(picture);
+                }
                 String title = kb.nextLine();
-                String intro = kb.nextLine();
-                String picture_url = kb.nextLine();
-                String name = kb.nextLine();
-                String info = kb.nextLine();
-                Food food = new Food(title, intro, picture_url, name, info);
-                recyclerAdapter.addFood(food);
+                String type = kb.nextLine();
+                String reviews = kb.nextLine();
+                String time = kb.nextLine();
+                String delivery_fee = kb.nextLine();
+                Food food = new Food(title, type, reviews, time, delivery_fee, pictureList);
+                foodRecyclerAdapter.addFood(food);
                 kb.nextLine();
             }
             inputStream.close();
@@ -86,8 +97,10 @@ public class FoodFragment extends Fragment {
         } catch (IOException e){
             e.printStackTrace();
         }
-        recyclerAdapter.notifyDataSetChanged();
+        foodRecyclerAdapter.notifyDataSetChanged();
     }
+
+
     public static FoodFragment newInstance(int sectionNumber) {
         FoodFragment foodFragment = new FoodFragment();
         Bundle args = new Bundle();

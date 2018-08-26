@@ -1,8 +1,11 @@
 package com.hanlu.doordash_v2;
 
+import java.util.ArrayList;
+
 public class Food {
 
-    private String title, intro, picture_url, name, info;
+    private String title;
+    private String type;
 
     public String getTitle() {
         return title;
@@ -12,43 +15,58 @@ public class Food {
         this.title = title;
     }
 
-    public String getIntro() {
-        return intro;
+    public String getType() {
+        return type;
     }
 
-    public void setIntro(String intro) {
-        this.intro = intro;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public String getPicture_url() {
+    public String getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(String reviews) {
+        this.reviews = reviews;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getDelivery_fee() {
+        return delivery_fee;
+    }
+
+    public void setDelivery_fee(String delivery_fee) {
+        this.delivery_fee = delivery_fee;
+    }
+
+    public ArrayList<String> getPicture_url() {
         return picture_url;
     }
 
-    public void setPicture_url(String picture_url) {
+    public void setPicture_url(ArrayList<String> picture_url) {
         this.picture_url = picture_url;
     }
 
-    public String getName() {
-        return name;
-    }
+    public Food(String title, String type, String reviews, String time, String delivery_fee, ArrayList<String> picture_url) {
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getInfo() {
-        return info;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
-    }
-
-    public Food(String title, String intro, String picture_url, String name, String info) {
         this.title = title;
-        this.intro = intro;
+        this.type = type;
+        this.reviews = reviews;
+        this.time = time;
+        this.delivery_fee = delivery_fee;
         this.picture_url = picture_url;
-        this.name = name;
-        this.info = info;
     }
+
+    private String reviews;
+    private String time;
+    private String delivery_fee;
+    private ArrayList<String> picture_url;
 }
