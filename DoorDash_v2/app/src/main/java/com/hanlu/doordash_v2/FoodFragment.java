@@ -73,12 +73,12 @@ public class FoodFragment extends Fragment {
     //title, intro, picture_url, name, info;
     public void initializeObject(AssetManager assetManager){
         InputStream inputStream;
-        ArrayList<String> pictureList = new ArrayList<>();
         try{
             inputStream = assetManager.open("foods.txt");
             Scanner kb = new Scanner(inputStream);
             kb.nextLine();
             while (kb.hasNext()){
+                ArrayList<String> pictureList = new ArrayList<>();
                 for (int i = 0; i < 4; i++) {
                     String picture = kb.nextLine();
                     pictureList.add(picture);

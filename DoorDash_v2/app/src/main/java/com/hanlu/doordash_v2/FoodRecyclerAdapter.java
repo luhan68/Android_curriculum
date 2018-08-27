@@ -45,9 +45,8 @@ public class FoodRecyclerAdapter extends RecyclerView.Adapter<FoodRecyclerAdapte
         foodViewHolder.type.setText(food.getType());
         foodViewHolder.time.setText(food.getTime());
         foodViewHolder.delivery_fee.setText(food.getDelivery_fee());
-        foodViewHolder.pictureRecyclerAdapter.setRowIndex(i);
-       // foodViewHolder.pictureRecyclerAdapter.setPicturesList(foodViewHolder.getTag());
         initializeRecyclerView(foodViewHolder.pictureRecyclerView, context);
+        foodViewHolder.pictureRecyclerAdapter.setPicturesList(food.getPicture_url());
     }
 
 
@@ -67,7 +66,7 @@ public class FoodRecyclerAdapter extends RecyclerView.Adapter<FoodRecyclerAdapte
     public static class FoodViewHolder extends RecyclerView.ViewHolder{
         public TextView title, type, time, delivery_fee;
         private RecyclerView pictureRecyclerView;
-        private static PictureRecyclerAdapter pictureRecyclerAdapter;
+        private PictureRecyclerAdapter pictureRecyclerAdapter;
         
         public FoodViewHolder(@NonNull View itemView) {
             super(itemView);

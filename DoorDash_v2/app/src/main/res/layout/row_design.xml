@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/picture_recycler_view"
-        android:layout_width="400dp"
-        android:layout_height="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:scrollbars="horizontal" />
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/picture_recycler_view"
         android:text="Golden Chick"
         android:textColor="#000000"
+        android:textStyle="bold"
         android:textSize="30dp" />
 
     <TextView
@@ -26,7 +28,7 @@
         android:layout_below="@+id/title"
         android:text="Breakfast and Brunch"
         android:textColor="#868484"
-        android:textSize="15dp"/>
+        android:textSize="15dp" />
 
     <TextView
         android:id="@+id/time"
@@ -36,7 +38,7 @@
         android:layout_alignParentRight="true"
         android:text="34min"
         android:textColor="#868484"
-        android:textSize="15dp"/>
+        android:textSize="15dp" />
 
     <TextView
         android:id="@+id/reviews"
@@ -46,7 +48,7 @@
         android:layout_alignParentLeft="true"
         android:text="4.7 Stars - 387 Reviews"
         android:textColor="#0014f1"
-        android:textSize="15dp"/>
+        android:textSize="15dp" />
 
     <TextView
         android:id="@+id/delivery_fee"
@@ -56,7 +58,7 @@
         android:layout_alignParentRight="true"
         android:text="Free delivery over $35"
         android:textColor="#868484"
-        android:textSize="15dp"/>
+        android:textSize="15dp" />
 
 
 </RelativeLayout>

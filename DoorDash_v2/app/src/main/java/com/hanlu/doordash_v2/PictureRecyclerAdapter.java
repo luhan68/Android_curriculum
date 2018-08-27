@@ -16,22 +16,15 @@ import java.util.ArrayList;
 public class PictureRecyclerAdapter extends RecyclerView.Adapter<PictureRecyclerAdapter.PictureViewHolder> {
     private ArrayList<String> picturesList;
     private Context context;
-    private int mRowIndex = -1;
 
     public PictureRecyclerAdapter() {
     }
 
-    public void setPicturesList(ArrayList<String> pictures)
-    {
-        if (picturesList != pictures)
-        {
+    public void setPicturesList(ArrayList<String> pictures) {
+        if (picturesList != pictures) {
             picturesList = pictures;
             notifyDataSetChanged();
         }
-    }
-
-    public void setRowIndex(int index) {
-        mRowIndex = index;
     }
 
     @NonNull
@@ -40,16 +33,15 @@ public class PictureRecyclerAdapter extends RecyclerView.Adapter<PictureRecycler
         context = viewGroup.getContext();
         picturesList = FoodRecyclerAdapter.getFood(i).getPicture_url();
         View rowView = LayoutInflater.from(context).inflate(R.layout.picture_design, viewGroup, false);
-
         return new PictureViewHolder(rowView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull PictureViewHolder viewHolder, int i) {
-        PictureViewHolder holder = viewHolder;
-        Glide.with(context).load(picturesList.get(i)).into(holder.picturesView);
-        holder.itemView.setTag(i);
-
+        if (picturesList.get(i) != null)
+        {
+            Glide.with(context).load(picturesList.get(i)).into(viewHolder.picturesView);
+        }
     }
 
     @Override
@@ -62,7 +54,7 @@ public class PictureRecyclerAdapter extends RecyclerView.Adapter<PictureRecycler
 
         public PictureViewHolder(@NonNull View itemView) {
             super(itemView);
-            picturesView = itemView.findViewById(R.id.picture_recycler_view);
+            picturesView = itemView.findViewById(R.id.picture);
         }
     }
 
