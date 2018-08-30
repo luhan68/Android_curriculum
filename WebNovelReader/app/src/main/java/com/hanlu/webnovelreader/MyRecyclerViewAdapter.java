@@ -6,24 +6,38 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
 
-    private String[] mData;
+    private static ArrayList<Book> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
+    private Context context;
 
     // data is passed into the constructor
-    public MyRecyclerViewAdapter(Context context, String[] data) {
+    MyRecyclerViewAdapter(Context context, String[] data) {
         this.mInflater = LayoutInflater.from(context);
-        this.mData = data;
+        mData = new ArrayList<>();
     }
+
+    public static void addBook(Book book){
+        mData.add(book);
+    }
+
+    public static Book getBook(int position){return mData.get(position);}
 
     // inflates the cell layout from xml when needed
     @Override
     @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        context = parent.getContext();
         View view = mInflater.inflate(R.layout.grid_layout, parent, false);
         return new ViewHolder(view);
     }
@@ -31,22 +45,31 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     // binds the data to the TextView in each cell
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.myTextView.setText(mData[position]);
+        Book book = mData.get(position);
+        holder.title.setText(book.getTitle());
+        holder.chaptersUnread.setText(book.getUnread());
+        Glide.with(context).load(book.getCoverPictureURL()).into(holder.coverPicture);
+
     }
 
     // total number of cells
     @Override
     public int getItemCount() {
-        return mData.length;
+        return mData.size();
     }
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView myTextView;
+        private ImageView coverPicture;
+        private CheckBox checkBox;
+        private TextView title, chaptersUnread;
 
-        ViewHolder(View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
-            myTextView = itemView.findViewById(R.id.info_text);
+            coverPicture = itemView.findViewById(R.id.image);
+            title = itemView.findViewById(R.id.title);
+            checkBox = itemView.findViewById(R.id.checkbox);
+            chaptersUnread = itemView.findViewById(R.id.chapters);
             itemView.setOnClickListener(this);
         }
 
@@ -57,8 +80,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     }
 
     // convenience method for getting data at click position
-    String getItem(int id) {
-        return mData[id];
+    Book getItem(int id) {
+        return mData.get(id);
     }
 
     // allows clicks events to be caught

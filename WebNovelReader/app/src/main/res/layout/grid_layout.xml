@@ -1,15 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="50dp"
-    android:layout_height="50dp"
-    android:orientation="horizontal"
-    android:layout_margin="5dp">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="95dp"
+            android:layout_height="140dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/novel1" />
+
+        <CheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:text="*" />
+    </FrameLayout>
 
     <TextView
-        android:id="@+id/info_text"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:background="@color/colorAccent"/>
+        android:id="@+id/title"
+        android:layout_width="95dp"
+        android:layout_height="35dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="The King's Avatar"
+        android:textSize="14sp" />
 
+    <TextView
+        android:id="@+id/chapters"
+        android:layout_width="95dp"
+        android:layout_height="17dp"
+        android:text="0 unread"
+        android:textColor="#acabab"
+        android:textSize="11sp" />
 </LinearLayout>
