@@ -1,5 +1,6 @@
 package com.hanlu.webnovelreader;
 
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -8,6 +9,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -62,7 +64,11 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
 
     @Override
     public void onItemClick(View view, int position) {
+        Book book = adapter.getItem(position);
+        Toast.makeText(this,book.getTitle() + "is selected!",Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, NovelActivity.class);
+        startActivity(intent);
 
-        Log.i("TAG", "You clicked number " + adapter.getItem(position) + ", which is at cell position " + position);
+        Log.i("TAG", "You clicked number " + adapter.getItem(position).getTitle() + ", which is at cell position " + position);
     }
 }
