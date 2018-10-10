@@ -27,7 +27,7 @@
     <TextView
         android:id="@+id/title"
         android:layout_width="95dp"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="2"
         android:text="The King's Avatar"
@@ -35,8 +35,8 @@
 
     <TextView
         android:id="@+id/chapters"
-        android:layout_width="95dp"
-        android:layout_height="17dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="0 unread"
         android:textColor="#acabab"
         android:textSize="11sp" />

@@ -27,11 +27,13 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        WuXiaHelpers wuXiaHelpers = new WuXiaHelpers();
+        wuXiaHelpers.getLatestChapters(this);
         // data to populate the RecyclerView with
         String[] data = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
         // set up the RecyclerView
-        recyclerView= findViewById(R.id.recycler_view);
+        recyclerView = findViewById(R.id.recycler_view);
         int numberOfColumns = 3;
         recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
         adapter = new MyRecyclerViewAdapter(this, data);
@@ -40,23 +42,23 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
         recyclerView.setAdapter(adapter);
     }
 
-    public void initializeBook(AssetManager assetManager){
+    public void initializeBook(AssetManager assetManager) {
         InputStream inputStream;
-        try{
+        try {
             inputStream = assetManager.open("novels.txt");
             Scanner kb = new Scanner(inputStream);
             kb.nextLine();
-            while (kb.hasNext()){
+            while (kb.hasNext()) {
                 String pictureUrl = kb.nextLine();
                 String title = kb.nextLine();
                 String unread = kb.nextLine();
-                Book book = new Book(pictureUrl, title,unread);
+                Book book = new Book(pictureUrl, title, unread);
                 MyRecyclerViewAdapter.addBook(book);
                 kb.nextLine();
             }
             inputStream.close();
             kb.close();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         adapter.notifyDataSetChanged();
@@ -65,7 +67,8 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
     @Override
     public void onItemClick(View view, int position) {
         Book book = adapter.getItem(position);
-        Toast.makeText(this,book.getTitle() + "is selected!",Toast.LENGTH_SHORT).show();
+
+        Toast.makeText(this, book.getTitle() + "is selected!", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, NovelActivity.class);
         startActivity(intent);
 
